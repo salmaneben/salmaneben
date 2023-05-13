@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+       /* Your CSS styles go here */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.hd-hero-search-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hd-search-inputs {
+    position: relative;
+}
+
+.hd-search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.hd-search-cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the buttons */
+    margin-top: 20px;
+}
+
+.hd-search-cats .item {
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #58729f; /* change text color to black */
+    font-weight: bold;
+    font-size: 15px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+    border: 2px solid #edf0fa; /* Border color */
+}
+
+.hd-search-cats .item:hover {
+    color: #fff; /* Text color on hover */
+    background: #edf0fa; /* Background color on hover */
+}
+
+.hd-search-cats .item:hover i {
+    color: #fff; /* Icon color on hover */
+}
+
+.hd-search-cats .item:active {
+    color: #fff; /* Text color on click */
+    background: #000; /* Background color on click */
+}
+
+.hd-search-cats .item:active i {
+    color: #fff; /* Icon color on click */
+}
+
+.hd-search-cats .item i {
+    margin-right: 5px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #ddd; /* Add this line to give a background color to the icon */
+}
+        /* Add your icons here */
+        .hd-search-cats .cat-1 i { color: #fff; background-color: #f44336; } /* Red */
+        .hd-search-cats .cat-46 i { color: #fff; background-color: #9c27b0; } /* Purple */
+        .hd-search-cats .cat-2 i { color: #fff; background-color: #3f51b5; } /* Indigo */
+        .hd-search-cats .cat-13 i { color: #fff; background-color: #4caf50; } /* Green */
+        .hd-search-cats .cat-63 i { color: #fff; background-color: #ff9800; } /* Orange */
+        .hd-search-cats .cat-48 i { color: #fff; background-color: #00bcd4; } /* Cyan */
+        .hd-search-cats .cat-150 i { color: #fff; background-color: #9e9e9e; } /* Grey */
+        .hd-search-cats .cat-29 i { color: #fff; background-color: #607d8b; } /* Blue Grey */
+
+        #hd_search_results {
+            margin-top: 20px;
+        }
+
+        #hd_search_loader {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #hd_search_loader svg {
+            display: block;
+            margin: 15px auto;
+        }
+        
+    </style>
+<body>
+    <form role="search" method="get" action="#" class="hd-hero-search-form">
+        <label for="hd_search_keyword" class="wp-block-search__label screen-reader-text">البحث</label>
+        <div class="hd-search-inputs">
+            <input type="search" id="hd_search_keyword" class="hd-search-input" name="s" value="" placeholder="⌕ ابدأ بكتابة ما تبحث عنه هنا وستظهر النتائج.." required="" autocomplete="off">
+        </div>
+
+         <div class="hd-search-cats" id="hd_search_cats">
+            <span class="ico-params" title="تصفية النتائج"></span>
+            <a href="https://ma3loma.pro/category/%d9%88%d9%88%d8%b1%d8%af%d8%a8%d8%b1%d9%8a%d8%b3/" class="cat-1 item" data-id="1"><i class="fas fa-star"></i>&nbsp; ووردبريس </a>
+            <a href="https://ma3loma.pro/category/%d8%b3%d9%8a%d9%88-seo/" class="item cat-46" data-id="46"><i class="fas fa-trophy"></i>&nbsp; سيو (seo) </a>
+            <a href="https://www.youtube.com/c/alma3rifapro/videos" class="item cat-2" data-id="2"><i class="fas fa-video"></i>&nbsp; دروس اليوتيوب </a>
+            <a href="https://ma3loma.pro/category/%d8%a8%d9%84%d9%88%d8%ac%d8%b1/" class="item cat-13" data-id="13"><i class="fas fa-blog"></i>&nbsp; بلوجر </a>
+            <a href="https://ma3loma.pro/category/%d8%a8%d8%b1%d8%a7%d9%85%d8%ac/" class="item cat-63" data-id="63"><i class="fas fa-book"></i>&nbsp; برامج </a>
+            <a href="https://ma3loma.pro/student-registration/" class="item cat-48" data-id="48"><i class="fas fa-globe"></i>&nbsp; دورات مجانية </a>
+            <a href="https://ma3loma.pro/category/%d9%85%d8%b1%d8%a7%d8%ac%d8%b9%d8%a9/" class="item cat-29" data-id="29"><i class="fas fa-balance-scale"></i>&nbsp; مُقارنة </a>
+        </div>
+        
+        
+        <div id="hd_search_results" class="hd-search-results" style="display: none">
+            <div id="hd_search_results_inner" style="display: none"></div>
+            
+            <div id="hd_search_loader">
+                <!-- Put your SVG loader here -->
+            </div>
+        </div>
+    </form>
+</body>
+</html>
